@@ -1,4 +1,5 @@
-#include "ucapi/debug.h"
+#ifndef UCAPI_CORTEX_M_DEBUG_H_INCLUDED
+#define UCAPI_CORTEX_M_DEBUG_H_INCLUDED
 
 struct cortex_m_debug_system_registers
 {
@@ -77,11 +78,6 @@ struct cortex_m_debug_system_registers
     } __reserved0[256];
 };
 
+#define debug ((struct cortex_m_debug_system_registers*)DEBUG_BASE)
 
-static volatile struct cortex_m_debug_system_registers* const debug = (struct cortex_m_debug_system_registers*)0xE000EDF0;
-
-
-extern enum ucapi_debug_states ucapi_get_debug_state(void)
-{
-    return debug->dhcsr.read.c_debugen ? ucapi_debug_enabled : ucapi_debug_disabled;
-}
+#endif /* UCAPI_CORTEX_M_DEBUG_H_INCLUDED */

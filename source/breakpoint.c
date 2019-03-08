@@ -1,5 +1,6 @@
-#include "ucapi/breakpoint.h"
-#include "ucapi/cortex-m/bkpt.h"
+#include <ucapi/breakpoint.h>
+
+#include "bkpt.h"
 
 extern void ucapi_breakpoint(void)
 {
