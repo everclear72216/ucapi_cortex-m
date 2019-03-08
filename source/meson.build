@@ -1,9 +1,12 @@
-ucapi_cortex_m_sources = []
-ucapi_cortex_m_sources += 'breakpoint.c'
-ucapi_cortex_m_sources += 'debug_system.c'
+target = 'ucapi_cortex-m'
 
-ucapi_cortex_m_static = static_library('ucapi_cortex-m',
-    ucapi_cortex_m_sources,
-    include_directories: ucapi_cortex_m_include_dirs,
-    dependencies: ucapi_dep,
+sources = files(
+    'breakpoint.c',
+    'debug_system.c'
+)
+
+ucapi_cortex_m_lib = static_library(
+    target, sources,
+    dependencies: [ ucapi_dep ],
+    include_directories: ucapi_cortex_m_include_dirs
 )
