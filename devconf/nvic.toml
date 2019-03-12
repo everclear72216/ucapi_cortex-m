@@ -1,0 +1,6 @@
+[def.nvic.base]
+default_value = 0xE000E100
+allowed_values = [
+    [ 0xE000E100 ],
+    [ 0xE000E100 ]
+]

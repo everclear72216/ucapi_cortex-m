@@ -1,0 +1,20 @@
+[def.scb.base]
+default_value = 0xE000EDF0
+allowed_values = [
+    [ 0xE000EDF0 ],
+    [ 0xE000EDF0 ]
+]
+
+[def.scb.priority_bits]
+default_value = 8
+allowed_values = [
+    [ 3, 4, 5, 6, 7, 8 ],
+    [ 3, 4, 5, 6, 7, 8 ]
+]
+
+[def.scb.group_priority_bits]
+default_value = 7
+allowed_values = [
+    [ 0, 1, 2, 3, 4, 5, 6, 7 ],
+    [ 7, 6, 5, 4, 3, 2, 1, 0 ]
+]

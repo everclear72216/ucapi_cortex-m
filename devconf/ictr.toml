@@ -1,0 +1,6 @@
+[def.ictr.base]
+default_value = 0xE000E004
+allowed_values = [
+    [ 0xE000E004 ],
+    [ 0xE000E004 ]
+]

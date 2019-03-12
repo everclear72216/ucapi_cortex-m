@@ -1,6 +1,6 @@
 #include <ucapi/breakpoint.h>
 
-#include "bkpt.h"
+#include "instructions/bkpt.h"
 
 extern void ucapi_breakpoint(void)
 {

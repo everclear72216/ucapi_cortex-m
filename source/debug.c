@@ -2,7 +2,7 @@
 
 #include "devconf.h"
 
-#include "debug.h"
+#include "registers/debug.h"
 
 extern enum ucapi_debug_states ucapi_get_debug_state(void)
 {
