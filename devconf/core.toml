@@ -1,0 +1,13 @@
+[def.vector_table.relocate]
+default_value = false
+allowed_values = [
+    [ true, false ],
+    [    1,     0 ]
+]
+
+[def.vector_table_size]
+default_value = 16
+allowed_values = [
+    '@range(16, 512)',
+    '@range(16, 512)'
+]

@@ -7,7 +7,8 @@ SECTIONS
     .text :
     {
         __vector_table_flash_start = .;
-        KEEP(*(.__vector_table_flash))
+        KEEP(*(.core_table_flash))
+        KEEP(*(.peri_table_flash))
         . = ALIGN(4);
         __vector_table_flash_end = .;
 
@@ -22,7 +23,8 @@ SECTIONS
     .ram.vectortable :
     {
         __vector_table_ram_start = .;
-        KEEP(*(.vector_table_ram))
+        KEEP(*(.core_table_ram))
+        KEEP(*(.peri_table_ram))
         . = ALIGN(4);
         __vector_table_ram_end = .;
     } >SRAM

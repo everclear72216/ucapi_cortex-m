@@ -1,4 +1,4 @@
-#include "reset.h"
+#include "interrupts/reset.h"
 
 extern int main(void);
 
@@ -9,7 +9,7 @@ extern unsigned char __data_vma;
 extern unsigned char __data_vma_end;
 extern const unsigned char __data_lma;
 
-__attribute__ ((interrupt ("IRQ"))) extern void __reset_isr(void)
+__attribute__ ((weak, interrupt ("IRQ"))) extern void __reset_isr(void)
 {
     unsigned char* volatile dst;
     const unsigned char* volatile src;
