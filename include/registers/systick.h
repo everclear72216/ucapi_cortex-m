@@ -35,8 +35,8 @@ struct cortex_m_systick_registers
         };
     } syst_calib;
 
-    unsigned int __reserved0[0xdc]
-}
+    unsigned int __reserved0[0xdc];
+};
 
 #define systick ((volatile struct cortex_m_systick_registers*)SYSTICK_BASE)
 

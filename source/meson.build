@@ -5,9 +5,12 @@ sources = files(
     'nvic.c',
     'reset.c',
     'debug.c',
-    'vector.c',
+    'systick.c',
+    'core_init.c',
+    'supervisor.c',
     'breakpoint.c',
     'exceptions.c',
+    'vector_table.c'
 )
 
 ucapi_cortex_m_lib = static_library(
