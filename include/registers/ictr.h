@@ -12,6 +12,6 @@ struct cortex_m_ictr_registers
     };
 }
 
-#define ictr ((volatile struct cortex_m_ictr_registers*)ICTR_BASE)
+#define ictr ((volatile struct cortex_m_ictr_registers*)DC_CORTEX_M_BASES_ICTR)
 
 #define /* UCAPI_CORTEX_M_REGISTERS_ICTR_H_INCLUDED */

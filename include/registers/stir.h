@@ -12,6 +12,6 @@ struct cortex_m_stir_registers
     };
 };
 
-#define stir ((volatile struct cortex_m_stir_registers*)STIR_BASE)
+#define stir ((volatile struct cortex_m_stir_registers*)DC_CORTEX_M_BASES_STIR)
 
 #endif /* UCAPI_CORTEX_M_REGISTERS_STIR_H_INCLUDED */

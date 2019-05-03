@@ -1,6 +1,0 @@
-[def.debug.base]
-default_value = 0xE000EDF0
-allowed_values = [
-    [ 0xE000EDF0 ],
-    [ 0xE000EDF0 ]
-]

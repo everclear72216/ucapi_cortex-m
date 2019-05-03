@@ -1,6 +1,0 @@
-[def.systick.base]
-default_value = 0xE000E010
-allowed_values = [
-    [ 0xE000E010 ],
-    [ 0xE000E010 ]
-]

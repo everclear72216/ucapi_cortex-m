@@ -11,6 +11,6 @@ struct cortex_m_nvic_registers
     unsigned int ipr[128];
 };
 
-#define nvic ((volatile struct cortex_m_nvic_registers*)NVIC_BASE)
+#define nvic ((volatile struct cortex_m_nvic_registers*)DC_CORTEX_M_BASES_NVIC)
 
 #endif /* UCAPI_CORTEX_M_REGISTERS_NVIC_H_INCLUDED */

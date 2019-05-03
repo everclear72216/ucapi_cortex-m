@@ -1,0 +1,45 @@
+namespace cortex_m {
+    struct VectorTableS {
+        bool relocate {
+            default = false;
+            map { false = 0, true = 1 };
+        };
+        int size {
+            default = 512;
+            allow { [16 .. 512] };
+        };
+    };
+
+    struct PriorityConfigS {
+        int prios {
+            default = 8;
+            allow { [3 .. 8] };
+        };
+        int group {
+            default = 7;
+            allow { [0 .. 7] };
+            map {
+                0 = 7,
+                1 = 6,
+                2 = 5,
+                4 = 3,
+                3 = 4,
+                5 = 2,
+                6 = 1,
+                7 = 0
+            };
+        };
+    };
+
+    namespace bases {
+        const int ictr { default = 0xE000E004; };
+        const int systick {default = 0xE000E010; };
+        const int nvic { default = 0xE000E100; };
+        const int scb { default = 0xE000EDF0; };
+        const int debug { default = 0xE000EDF0; };
+        const int stir { default = 0xE000EF00; };
+    }
+
+    struct VectorTableS vector_table;
+    struct PriorityConfigS priority_config;
+}

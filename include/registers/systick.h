@@ -38,6 +38,6 @@ struct cortex_m_systick_registers
     unsigned int __reserved0[0xdc];
 };
 
-#define systick ((volatile struct cortex_m_systick_registers*)SYSTICK_BASE)
+#define systick ((volatile struct cortex_m_systick_registers*)DC_CORTEX_M_BASES_SYSTICK)
 
 #endif /* UCAPI_CORTEX_M_REGISTERS_SYSTICK_H_INCLUDED */
