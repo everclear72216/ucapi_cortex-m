@@ -4,7 +4,7 @@
 #include "registers/scb.h"
 
 /* A priority register is always 8 bits wide.
- * 
+ *
  * +---+---+---+---+---+---+---+---+-------------+
  * | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | BIT         |
  * +---+---+---+---+---+---+---+---+-------------+
@@ -17,11 +17,11 @@
  *
  * PBITS        Is the number of priority bits actually implemented by the
  *              vendor. Priority bits fill the register from msb to lsb.
- *              
+ *
  * PRIGROUP     Is a user defined value determining the number of priority
  *              groups by partitioning the priority field into bits for
  *              the group priority (G) and bits for the subpriority (S).
- * 
+ *
  * Example:     In the example above we have 3 group priority bits and we
  *              have 1 subpriority bit. Thus there are 8 group priority
  *              values and 2 subpriority values. A currently running isr
@@ -32,8 +32,8 @@
  *              there will be no preemption between them.
  */
 
-#define PRIORITIES_RESERVED_BITS (8 - SCB_PRIORITY_BITS_VALUE)
-#define PRIORITIES_SUBPRIORITY_BITS (8 - SCB_GROUP_PRIORITY_BITS_VALUE)
+#define PRIORITIES_RESERVED_BITS (8 - DC_CORTEX_M_PRIORITY_CONFIG_PRIOS)
+#define PRIORITIES_SUBPRIORITY_BITS (8 - DC_CORTEX_M_PRIORITY_CONFIG_GROUP)
 
 #define PRIORITIES_SUBPRIORITY_BITS_USED (PRIORITIES_RESERVED_BITS - PRIORITIES_SUBPRIORITY_BITS)
 #if PRIORITIES_SUBPRIORITY_BITS_USED < 0
@@ -58,7 +58,7 @@ struct cortex_m_priority {
 #if PRIORITIES_RESERVED_BITS
             unsigned char __reserved0:PRIORITIES_RESERVED_BITS;
 #endif /* PRIORITIES_RESERVED_BITS */
-#if PRIORITIES_SUBPRIORITY_BITS_USED  
+#if PRIORITIES_SUBPRIORITY_BITS_USED
             unsigned char subpriority:PRIORITIES_SUBPRIORITY_BITS_USED;
 #endif /* PRIORITIES_SUBPRIORITY_BITS_USED */
 #if PRIORITIES_GROUPPRIORITY_BITS_USED
@@ -67,10 +67,10 @@ struct cortex_m_priority {
         };
     };
 };
-   
+
 static inline void cortex_m_set_prigroup(void)
 {
-    scb->aircr.prigroup = SCB_GROUP_PRIORITY_BITS;
+    scb->aircr.prigroup = DC_CORTEX_M_PRIORITY_CONFIG_GROUP;
 }
 
 #endif /* UCAPI_CORTEX_M_PRIORITIES_H_INCLUDED */

@@ -242,6 +242,6 @@ struct cortex_m_scb_registers
     unsigned int __reserved1;
 };
 
-#define scb ((volatile struct cortex_m_scb_registers*)SCB_BASE)
+#define scb ((volatile struct cortex_m_scb_registers*)DC_CORTEX_M_BASES_SCB)
 
 #endif /* UCAPI_CORTEX_M_REGISTERS_SCS_H_INCLUDED */

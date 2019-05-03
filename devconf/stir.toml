@@ -1,6 +1,0 @@
-[def.stir.base]
-default_value = 0xE000EF00
-allowed_values = [
-    [ 0xE000EF00 ],
-    [ 0xE000EF00 ]
-]

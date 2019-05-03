@@ -15,19 +15,19 @@
 
 extern void __stack(void);
 
-#if VECTOR_TABLE_RELOCATE
-#   define RAM_VECTOR_TABLE_SIZE VECTOR_TABLE_SIZE
+#if DC_CORTEX_M_VECTOR_TABLE_RELOCATE
+#   define RAM_VECTOR_TABLE_SIZE DC_CORTEX_M_VECTOR_TABLE_SIZE
 #   define FLASH_VECTOR_TABLE_SIZE CORE_VECTOR_TABLE_SIZE
 #else
 #   define RAM_VECTOR_TABLE_SIZE 0
-#   define FLASH_VECTOR_TABLE_SIZE VECTOR_TABLE_SIZE
-#endif /* VECTOR_TABLE_RELOCATE */
+#   define FLASH_VECTOR_TABLE_SIZE DC_CORTEX_M_VECTOR_TABLE_SIZE
+#endif /* DC_CORTEX_M_VECTOR_TABLE_RELOCATE */
 
 
-#if VECTOR_TABLE_RELOCATE
+#if DC_CORTEX_M_VECTOR_TABLE_RELOCATE
 __attribute__ ((section (".core_table_ram")))
 void (* __core_table_ram[RAM_VECTOR_TABLE_SIZE]) (void);
-#endif /* VECTOR_TABLE_RELOCATE */
+#endif /* DC_CORTEX_M_VECTOR_TABLE_RELOCATE */
 
 __attribute__ ((section (".core_table_flash")))
 void (*const __core_table_flash[FLASH_VECTOR_TABLE_SIZE]) (void) = {
@@ -59,7 +59,12 @@ static void (*get_vector_table(void))(void)
     return (void (*)(void))(table_offset << 7u);
 }
 
-#if VECTOR_TABLE_RELOCATE
+extern void (*cortex_m_get_vector_table(void))(void)
+{
+    return get_vector_table();
+}
+
+#if DC_CORTEX_M_VECTOR_TABLE_RELOCATE
 extern void cortex_m_relocate_vector_table(void)
 {
     unsigned char i;
@@ -75,9 +80,19 @@ extern void cortex_m_relocate_vector_table(void)
     unsigned int offset = (((unsigned int)__core_table_ram) >> 7u);
     scb->vtor.tbloff = offset;
 }
-#endif /* VECTOR_TABLE_RELOCATE */
 
-extern void (*cortex_m_get_vector_table(void))(void)
+extern void (*cortex_m_vector_table_set_isr(unsigned int index, void (*isr)(void)))(void)
 {
-    return get_vector_table();
+    void (*result)(void);
+
+    if (index < RAM_VECTOR_TABLE_SIZE) {
+        result = __core_table_ram[index];
+        __core_table_ram[index] = isr;
+    }
+    else {
+        result = 0;
+    }
+
+    return result;
 }
+#endif /* DC_CORTEX_M_VECTOR_TABLE_RELOCATE */

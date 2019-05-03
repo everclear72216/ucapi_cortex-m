@@ -47,7 +47,7 @@ struct cortex_m_debug_system_registers
     } dcrsr;
 
     union {
-        unsigned int reg;  
+        unsigned int reg;
     } dbgtmp;
 
     union {
@@ -78,6 +78,6 @@ struct cortex_m_debug_system_registers
     } __reserved0[0x100];
 };
 
-#define debug ((volatile struct cortex_m_debug_system_registers*)DEBUG_BASE)
+#define debug ((volatile struct cortex_m_debug_system_registers*)DC_CORTEX_M_BASES_DEBUG)
 
 #endif /* UCAPI_CORTEX_M_REGISTERS_DEBUG_H_INCLUDED */
