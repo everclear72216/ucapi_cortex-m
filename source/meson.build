@@ -13,6 +13,8 @@ sources = files(
     'vector_table.c'
 )
 
+subdir('ucapi')
+
 ucapi_cortex_m_lib = static_library(
     target, sources,
     dependencies: [ devconf_dep, ucapi_dep ],
